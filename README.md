@@ -15,7 +15,8 @@ Riot API를 활용해서, 롤 전적 데이터 3D 시각화
 - [x] wiki를 활용한 각종 컨벤션 설정
 - [x] git flow를 활용한 브랜치 전략 설정
 - [x] vercel deploy를 활용한 CI/CD 설정
-- [ ] Riot API Custom Hooks
+- [x] Riot API Custom Hooks
+- [ ] Layout 잡기
 
 
 ## Reference
