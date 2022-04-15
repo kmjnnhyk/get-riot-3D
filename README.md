@@ -9,6 +9,7 @@ Riot API를 활용해서, 롤 전적 데이터 3D 시각화
 - 상태관리 : `React-Query` `Recoil`
 - CI/CD : `Vercel Deploy`
 - 브랜치 전략 : `Git Flow`
+- CONFIG 커스텀 : `React-App-Rewired` `Customize-CRA`
 
 ## TODO
 
