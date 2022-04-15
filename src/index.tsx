@@ -1,9 +1,8 @@
 import React from 'react';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import { createRoot } from 'react-dom/client';
+import App from '@/App';
+import '@styles/index.scss';
 
-import './index.css';
+import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 const rootElement = document.getElementById('root') as HTMLElement;
@@ -13,10 +12,8 @@ const queryClient = new QueryClient();
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>
 );

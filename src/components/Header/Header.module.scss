@@ -1,3 +1,6 @@
+@use '@styles/variables';
+
 .header {
-    text-align: center;
+  text-align: center;
+  background-color: variables.$sub-color;
 }
