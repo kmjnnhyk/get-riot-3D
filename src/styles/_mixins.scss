@@ -1,0 +1,23 @@
+@use 'variables';
+
+/* CUSTOM */
+@mixin flexMixin($gap: 0, $flexDir: row) {
+  display: flex;
+  flex-direction: $flexDir;
+  align-items: center;
+  justify-content: center;
+  gap: $gap;
+}
+
+/* MEDIA QUERY */
+@mixin pc {
+  @media (max-width: variables.$pc) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: variables.$mobile) {
+    @content;
+  }
+}
