@@ -17,10 +17,14 @@ Riot API를 활용해서, 롤 전적 데이터 3D 시각화
 - [x] git flow를 활용한 브랜치 전략 설정
 - [x] vercel deploy를 활용한 CI/CD 설정
 - [x] Riot API Custom Hooks
+<<<<<<< HEAD
 - [x] Layout 잡기
 - [x] ESLint와 Prettier 적용하기
 - [ ] 3D 데이터 캔버스 구현
 - [ ] 전적 데이터 캡쳐 저장 기능
+=======
+- [ ] Layout 잡기
+>>>>>>> 383b950 (feat: 전체적인 레이아웃과 router 구성 완료 (#3))
 
 
 ## Reference

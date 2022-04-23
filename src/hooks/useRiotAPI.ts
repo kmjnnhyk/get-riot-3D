@@ -1,7 +1,7 @@
 import { QueryKey, useQuery, UseQueryOptions } from 'react-query';
 import { RInfo } from '../types';
 
-const RIOT_KEY = 'RGAPI-ed55dde0-2a7b-4b7d-8f32-3af8baf990fc';
+const RIOT_KEY = process.env.REACT_APP_RIOT_API_KEY;
 
 async function fetchAPI(nickname: string | undefined): Promise<RInfo> {
   // type check
