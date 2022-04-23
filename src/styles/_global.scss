@@ -1,5 +1,14 @@
 * {
   box-sizing: border-box;
-  font-family: 'Gothic A1', sans-serif;
+  list-style: none;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 100;
+  color: whitesmoke;
+
+  background-image: url('../resources/images/background.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }

@@ -1,15 +1,11 @@
-@use '@styles/variables';
-@use '@styles/mixins';
+@use '@styles' as *;
 
 .container {
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  bottom: 0;
 
-  @include mixins.flexMixin();
+  width: 100%;
+  height: 80vh;
 
-  background-color: variables.$bg-color;
-
-  font-size: 186px;
-  text-align: left;
-  color: variables.$main-color;
+  background-color: blue;
 }

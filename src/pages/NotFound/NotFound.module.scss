@@ -1,11 +1,11 @@
-@import '@styles/mixins';
+@use '@styles' as *;
 
 .container {
-	@include flexMixin();
-	height: 100vh;
+  @include flexMixin();
+  height: 100vh;
 
-	& h1 {
-		font-size: 32px;
-        font-weight: 600;
-	}
+  & h1 {
+    font-size: 32px;
+    font-weight: 600;
+  }
 }

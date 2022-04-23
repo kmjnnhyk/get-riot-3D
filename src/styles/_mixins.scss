@@ -11,13 +11,13 @@
 
 /* MEDIA QUERY */
 @mixin pc {
-  @media (max-width: variables.$pc) {
+  @media (max-width: $pc) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (max-width: variables.$mobile) {
+  @media (max-width: $mobile) {
     @content;
   }
 }
