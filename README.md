@@ -18,6 +18,8 @@ Riot API를 활용해서, 롤 전적 데이터 3D 시각화
 - [x] vercel deploy를 활용한 CI/CD 설정
 - [x] Riot API Custom Hooks
 - [ ] Layout 잡기
+- [ ] 3D 데이터 캔버스
+- [ ] 전적 데이터 캡쳐 저장 기능
 
 
 ## Reference
