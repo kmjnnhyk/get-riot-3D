@@ -1,13 +1,10 @@
-import { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Searcher.module.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
-import React from 'react';
 import classNames from 'classnames';
 
-type SearcherProps = {};
-
-const Searcher: FunctionComponent<SearcherProps> = function () {
+const Searcher: FunctionComponent = function () {
   const [input, setInput] = useState('');
 
   const navigate = useNavigate();
@@ -30,20 +27,17 @@ const Searcher: FunctionComponent<SearcherProps> = function () {
     <>
       <form
         onSubmit={handleSubmit}
-        className={cx(
-          styles.searcher,
-          inShowDataPage && styles['searcher--inShowDataPage']
-        )}
+        className={cx(styles.searcher, inShowDataPage && styles['searcher--inShowDataPage'])}
       >
         <input
-          type='text'
+          type="text"
           value={input}
           onChange={handleChange}
           placeholder="Search for Summoner's Nickname"
           className={styles.input}
         />
-        <button type='submit' onClick={() => handleSubmit} className={styles.button}>
-          <AiOutlineSearch size='24' color='white' />
+        <button type="submit" onClick={() => handleSubmit} className={styles.button}>
+          <AiOutlineSearch size="24" color="white" />
         </button>
       </form>
       <Outlet />
