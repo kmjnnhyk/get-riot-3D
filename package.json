@@ -25,7 +25,10 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src/**/*.{ts,tsx,js,jsx}",
+    "lint:fix": "eslint --fix ./src/**/*.{ts,tsx,js,jsx}",
+    "prettier": "prettier --write ./src/**/*.{ts,tsx}"
   },
   "eslintConfig": {
     "extends": [
@@ -47,7 +50,14 @@
   },
   "devDependencies": {
     "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
     "customize-cra": "^1.0.0",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.29.4",
+    "prettier": "^2.6.2",
     "react-app-rewired": "^2.2.1"
   }
 }

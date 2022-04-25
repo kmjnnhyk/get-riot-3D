@@ -9,5 +9,5 @@ module.exports = override(
     '@pages': path.resolve(__dirname, 'src/pages'),
     '@hooks': path.resolve(__dirname, 'src/hooks'),
     '@resources': path.resolve(__dirname, 'src/resources'),
-  })
+  }),
 );
