@@ -10,13 +10,13 @@
 
   position: fixed;
   margin: 0 auto;
-  top: 128px;
+  top: 196px;
   left: 0;
   right: 0;
 
   transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
   &--inShowDataPage {
-    transform: translateY(-84px);
+    transform: translateY(-128px);
   }
   .input {
     flex: 4;
