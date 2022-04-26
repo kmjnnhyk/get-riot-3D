@@ -5,7 +5,7 @@ Riot API를 활용해서, 롤 전적 데이터 3D 시각화
 ## Stack
 
 - 코어 : `CRA` `TypesSript`
-- 스타일링 : `SCSS` `CSS Module` `React-three-fiber`
+- 스타일링 : `SCSS` `CSS Module` `React-three-fiber` `React-three-fiber/drei`
 - 상태관리 : `React-Query` `Recoil`
 - CI/CD : `Vercel Deploy`
 - 브랜치 전략 : `Git Flow`
@@ -18,7 +18,7 @@ Riot API를 활용해서, 롤 전적 데이터 3D 시각화
 - [x] vercel deploy를 활용한 CI/CD 설정
 - [x] Riot API Custom Hooks
 - [x] Layout 잡기
-- [ ] ESLint와 Prettier 적용하기
+- [x] ESLint와 Prettier 적용하기
 - [ ] 3D 데이터 캔버스 구현
 - [ ] 전적 데이터 캡쳐 저장 기능
 
