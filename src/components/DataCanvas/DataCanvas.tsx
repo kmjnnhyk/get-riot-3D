@@ -1,76 +1,30 @@
-import { FunctionComponent, useRef, useState } from 'react';
-import { RInfo } from '@/types';
+import { FunctionComponent } from 'react';
 import styles from './DataCanvas.module.scss';
-
-import * as THREE from 'three';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Instance, Instances, OrbitControls } from '@react-three/drei';
-import { MathUtils } from 'three';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Words from './Words';
+import useRandomAttri from '@/hooks/useRandomAttri';
 
 type DataCanvasProps = {
-  data: RInfo;
+  info: Array<string | undefined>;
 };
 
-type ParticleType = {
-  pos: { x: number; y: number; z: number };
-  xRot: number;
-  yRot: number;
-};
+const POSITION_RANGE = 8; // 데이터 Particle의 랜덤 위치 범위
+const ROTATION_SPEED_RANGE = 0.01; // 각각의 Particle의 다른 회전 속도 범위
 
-const NUMBER_OF_PARTICLE = 13;
-const POSITION_RANGE = 8;
-const ROTATION_SPEED_RANGE = 0.01;
-
-const particles: ParticleType[] = Array.from({ length: NUMBER_OF_PARTICLE }, () => ({
-  pos: {
-    x: MathUtils.randInt(-POSITION_RANGE, POSITION_RANGE),
-    y: MathUtils.randInt(-POSITION_RANGE, POSITION_RANGE),
-    z: MathUtils.randInt(-POSITION_RANGE, POSITION_RANGE),
-  },
-  xRot: MathUtils.randFloat(0.005, ROTATION_SPEED_RANGE),
-  yRot: MathUtils.randFloat(0.005, ROTATION_SPEED_RANGE),
-}));
-
-function Sphere({ pos, xRot, yRot }: ParticleType) {
-  const ref = useRef<THREE.Mesh>(null);
-  const [hovered, setHovered] = useState(false);
-
-  useFrame(() => {
-    if (ref.current != null) {
-      ref.current.position.set(pos.x, pos.y, pos.z);
-      if (!hovered) {
-        ref.current.rotation.x += xRot;
-        ref.current.rotation.y += yRot;
-      }
-    }
-  });
-
-  return <Instance ref={ref} onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)} />;
-}
-
-function Spheres() {
-  const ref = useRef(null);
-
-  return (
-    <Instances ref={ref} limit={NUMBER_OF_PARTICLE}>
-      <sphereBufferGeometry args={[1, 12, 12]} />
-      <meshStandardMaterial color={'hotpink'} />
-      {particles.map((data, i) => (
-        <Sphere key={i} {...data} />
-      ))}
-    </Instances>
-  );
-}
-
-const DataCanvas: FunctionComponent<DataCanvasProps> = function ({ data }) {
-  console.log('data in DataCanvas Compo', data);
+const DataCanvas: FunctionComponent<DataCanvasProps> = function ({ info }) {
+  const particles = [];
+  for (let i = 0; i < info.length; i++) {
+    const PARTICLE_ATTRIBUE = useRandomAttri(POSITION_RANGE, ROTATION_SPEED_RANGE);
+    particles.push({ ...PARTICLE_ATTRIBUE, word: info[i] });
+  }
 
   return (
     <div className={styles.container}>
       <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <Spheres />
+        <Words particles={particles} />
         <OrbitControls />
       </Canvas>
     </div>

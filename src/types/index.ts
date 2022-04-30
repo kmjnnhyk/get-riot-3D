@@ -1,15 +1,16 @@
+/* Riot API Summoner Information Type */
 export type RInfo = {
-  freshBlood: boolean;
-  hotStreak: boolean;
-  inactive: boolean;
-  leagueId: string;
-  leaguePoints: number;
   losses: number;
-  queueType: string;
   rank: string;
-  summonerId: string;
   summonerName: string;
   tier: string;
-  veteran: boolean;
   wins: number;
+};
+
+/* DataCanvas Word Particle Type */
+export type WordProps = {
+  pos: { x: number; y: number; z: number };
+  xRot: number;
+  yRot: number;
+  word?: string | number;
 };
