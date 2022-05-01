@@ -9,7 +9,7 @@ const Home: FunctionComponent = function () {
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>LoL 3DV</h1>
-      <h2 className={styles.h2}>Share your records special to the world.</h2>
+      <h2 className={styles.h2}>Share your stats with the world in a special way!</h2>
       <p className={styles.p}>
         <strong>LoL 3DV</strong> provides a 3D visualization of your information. We wanted to live up flat and tedious
         data, and I want all of League of Legends-loving gamers to feel free to use, share and enjoy LoL 3DV’s services.
