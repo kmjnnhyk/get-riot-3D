@@ -16,7 +16,7 @@
 
   transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
   &--inShowDataPage {
-    transform: translateY(-84px);
+    transform: translateY(-100px);
   }
   .input {
     flex: 4;
