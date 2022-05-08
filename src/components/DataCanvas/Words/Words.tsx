@@ -1,18 +1,16 @@
-import { WordProps } from '@/types';
+// import { WordProps } from '@/types';
 import { FunctionComponent } from 'react';
 import Word from '../Word/Word';
 
-// import styles from './Words.module.scss'
-
 type WordsProps = {
-  particles: WordProps[];
+  particles: Array<THREE.Vector3 | string>[];
 };
 
 const Words: FunctionComponent<WordsProps> = function ({ particles }) {
   return (
     <>
-      {particles.map((data, i) => (
-        <Word key={i} {...data} />
+      {particles.map(([pos, word], i) => (
+        <Word key={i} pos={pos as THREE.Vector3} word={word as string} />
       ))}
     </>
   );

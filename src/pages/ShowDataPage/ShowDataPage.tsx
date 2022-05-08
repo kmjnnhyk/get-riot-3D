@@ -17,7 +17,7 @@ const ShowDataPage: FunctionComponent = function () {
   // if (result.isLoading) return <div>Loading...</div>;
   // else if (result.isError) return <div>Riot API ERROR!</div>;
 
-  const tempInfo = ['흑순이', 'PLATINUM IV', 'WINS : 24', 'LOSSES : 24']; //
+  const tempInfo = ['NICKNAME', 'PLATINUM IV', 'WINS : 24', 'LOSSES : 24']; //
 
   return (
     <>
