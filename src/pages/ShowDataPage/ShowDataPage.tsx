@@ -1,3 +1,4 @@
+// import useRiotAPI from '@/hooks/useRiotAPI';
 import DataCanvas from '@components/DataCanvas';
 import { FunctionComponent } from 'react';
 import styles from './ShowDataPage.module.scss';
