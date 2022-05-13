@@ -27,3 +27,7 @@ Riot API를 활용해서, 롤 전적 데이터 3D 시각화
 - https://github.com/pmndrs/react-three-fiber
 - https://toss.im/tossface
 - https://threejs.org/examples/
+
+## Design Reference
+- [github skyline](https://skyline.github.com/)
+- [vercel landing page](https://vercel.com/)
