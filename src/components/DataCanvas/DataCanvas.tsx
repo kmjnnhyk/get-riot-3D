@@ -1,53 +1,49 @@
-import { FunctionComponent, useMemo } from 'react';
+import { FunctionComponent } from 'react';
 import styles from './DataCanvas.module.scss';
+// import useRiotAPI from '@/hooks/useRiotAPI';
 import { Canvas } from '@react-three/fiber';
-import { TrackballControls } from '@react-three/drei';
-import Words from './Words';
-import * as THREE from 'three';
-import { MathUtils } from 'three';
+import { OrbitControls } from '@react-three/drei';
+import Graph from './Graph';
 
-type DataCanvasProps = {
-  info: Array<string | undefined>;
-};
+const DataCanvas: FunctionComponent = function () {
+  // /* 임시 RIOT API로 다 적용 완료했고, 일단 정식 API 키 받게되면 적용하겠습니다. */
+  // const params = useParams();
+  // const result = useRiotAPI(params.summoner, { refetchOnWindowFocus: false, keepPreviousData: true });
+  // const filteredInfo = [
+  //   result.data?.summonerName,
+  //   `${result.data?.tier} ${result.data?.rank}`,
+  //   `LOSSES : ${result.data?.wins}`,
+  //   `WINS : ${result.data?.losses}`,
+  // ];
+  // console.log(filteredInfo);
 
-// const particles = useMemo(() => {
-//   const temp = [];
-//   const spherical = new THREE.Spherical();
-//   const phiSpan = Math.PI / (info.length + 1);
-//   const thetaSpan = (Math.PI * 2) / info.length;
-//   for (let i = 1; i < info.length + 1; i++)
-//     for (let j = 0; j < info.length; j++)
-//       temp.push([new THREE.Vector3().setFromSpherical(spherical.set(RADIUS, phiSpan * i, thetaSpan * j)), info[j]]);
-//   return temp;
-// }, [info.length, RADIUS]);
-
-const DataCanvas: FunctionComponent<DataCanvasProps> = function ({ info }) {
-  const SPHERE_DIV = Math.sqrt(16); // 가상의 구를 총 16등분
-  // https://www.researchgate.net/figure/Definition-of-spherical-coordinates-for-measured-data_fig2_301657822
-  // 0° ≤ θ ≤ 180°(PI), 0° ≤ φ < 360°(2PI)
-  const phiSpan = Math.PI / (SPHERE_DIV + 1); // 범위가 겹치지 않게 SPHERE_DIV에 1을 더해줌
-  const thetaSpan = (Math.PI * 2) / SPHERE_DIV;
-
-  const particles = useMemo(() => {
-    const temp = [];
-    const spherical = new THREE.Spherical();
-
-    for (let i = 0; i < info.length; i++) {
-      const PHI_RAND = MathUtils.randInt(1, 4) * phiSpan;
-      const THETA_RAND = MathUtils.randInt(0, 3) * thetaSpan;
-      const RADIUS = MathUtils.randInt(3, 7);
-      if (i === 0) temp.push([[0, 0, 0], info[i]]);
-      else temp.push([new THREE.Vector3().setFromSpherical(spherical.set(RADIUS, PHI_RAND, THETA_RAND)), info[i]]);
-    }
-    return temp;
-  }, [SPHERE_DIV]);
+  // if (result.isLoading) return <div>Loading...</div>;
+  // else if (result.isError) return <div>Riot API ERROR!</div>;
+  const tempInfo = [
+    {
+      year: '2019',
+      figure: 5,
+    },
+    {
+      year: '2020',
+      figure: 10,
+    },
+    {
+      year: '2021',
+      figure: 12,
+    },
+    {
+      year: '2022',
+      figure: 15,
+    },
+  ];
 
   return (
     <div className={styles.container}>
-      <Canvas camera={{ position: [0, 0, 10] }}>
+      <Canvas orthographic camera={{ zoom: 10, position: [10, 10, 10] }}>
         <ambientLight />
-        <Words particles={particles} />
-        <TrackballControls />
+        <Graph info={tempInfo} />
+        <OrbitControls />
       </Canvas>
     </div>
   );
