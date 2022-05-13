@@ -1,14 +1,21 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
 * {
   box-sizing: border-box;
   list-style: none;
 }
 
 body {
+  @include flexMixin();
+
+  max-width: 100vw;
+  height: 100vh;
+  margin: 0;
+
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 100;
-  color: whitesmoke;
+  color: $white-color;
 
-  background-image: url('../resources/images/background.png');
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: $bg-color;
 }

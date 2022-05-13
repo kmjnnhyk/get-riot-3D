@@ -1,30 +1,48 @@
 import { FunctionComponent } from 'react';
 import styles from './DataCanvas.module.scss';
+// import useRiotAPI from '@/hooks/useRiotAPI';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import Words from './Words';
-import useRandomAttri from '@/hooks/useRandomAttri';
+import Graph from './Graph';
 
-type DataCanvasProps = {
-  info: Array<string | undefined>;
-};
+const DataCanvas: FunctionComponent = function () {
+  // /* 임시 RIOT API로 다 적용 완료했고, 일단 정식 API 키 받게되면 적용하겠습니다. */
+  // const params = useParams();
+  // const result = useRiotAPI(params.summoner, { refetchOnWindowFocus: false, keepPreviousData: true });
+  // const filteredInfo = [
+  //   result.data?.summonerName,
+  //   `${result.data?.tier} ${result.data?.rank}`,
+  //   `LOSSES : ${result.data?.wins}`,
+  //   `WINS : ${result.data?.losses}`,
+  // ];
+  // console.log(filteredInfo);
 
-const POSITION_RANGE = 8; // 데이터 Particle의 랜덤 위치 범위
-const ROTATION_SPEED_RANGE = 0.01; // 각각의 Particle의 다른 회전 속도 범위
-
-const DataCanvas: FunctionComponent<DataCanvasProps> = function ({ info }) {
-  const particles = [];
-  for (let i = 0; i < info.length; i++) {
-    const PARTICLE_ATTRIBUE = useRandomAttri(POSITION_RANGE, ROTATION_SPEED_RANGE);
-    particles.push({ ...PARTICLE_ATTRIBUE, word: info[i] });
-  }
+  // if (result.isLoading) return <div>Loading...</div>;
+  // else if (result.isError) return <div>Riot API ERROR!</div>;
+  const tempInfo = [
+    {
+      year: '2019',
+      figure: 5,
+    },
+    {
+      year: '2020',
+      figure: 10,
+    },
+    {
+      year: '2021',
+      figure: 12,
+    },
+    {
+      year: '2022',
+      figure: 15,
+    },
+  ];
 
   return (
     <div className={styles.container}>
-      <Canvas>
+      <Canvas orthographic camera={{ zoom: 10, position: [10, 10, 10] }}>
         <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <Words particles={particles} />
+        <Graph info={tempInfo} />
         <OrbitControls />
       </Canvas>
     </div>
