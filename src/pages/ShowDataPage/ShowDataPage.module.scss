@@ -1,0 +1,12 @@
+@use '@styles' as *;
+
+.container {
+  @include flexMixin();
+
+  width: $width-iphone-XR;
+  height: 100vh;
+  
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 24px;
+}
