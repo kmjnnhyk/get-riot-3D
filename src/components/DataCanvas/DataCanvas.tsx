@@ -1,24 +1,12 @@
 import { FunctionComponent } from 'react';
 import styles from './DataCanvas.module.scss';
-// import useRiotAPI from '@/hooks/useRiotAPI';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import Graph from './Graph';
+import * as THREE from 'three';
+import PlaneGeometry from './PlaneGeometry';
+import Graph from './Graph/Graph';
 
 const DataCanvas: FunctionComponent = function () {
-  // /* 임시 RIOT API로 다 적용 완료했고, 일단 정식 API 키 받게되면 적용하겠습니다. */
-  // const params = useParams();
-  // const result = useRiotAPI(params.summoner, { refetchOnWindowFocus: false, keepPreviousData: true });
-  // const filteredInfo = [
-  //   result.data?.summonerName,
-  //   `${result.data?.tier} ${result.data?.rank}`,
-  //   `LOSSES : ${result.data?.wins}`,
-  //   `WINS : ${result.data?.losses}`,
-  // ];
-  // console.log(filteredInfo);
-
-  // if (result.isLoading) return <div>Loading...</div>;
-  // else if (result.isError) return <div>Riot API ERROR!</div>;
   const tempInfo = [
     {
       year: '2019',
@@ -38,11 +26,26 @@ const DataCanvas: FunctionComponent = function () {
     },
   ];
 
+  const BOX_SIZE = 0.4;
+
+  /* ground setting */
+  const GROUND_WIDTH = 100;
+  const GROUND_LENGHT = 100;
+
+  /* camera setting */
+  const camera = new THREE.OrthographicCamera();
+  camera.zoom = 100;
+  camera.position.set(-10, 10, 10);
+  camera.near = 1;
+  camera.far = 1000;
+
   return (
     <div className={styles.container}>
-      <Canvas orthographic camera={{ zoom: 10, position: [10, 10, 10] }}>
-        <ambientLight />
-        <Graph info={tempInfo} />
+      <Canvas dpr={[1, 2]} orthographic shadows camera={camera}>
+        <ambientLight intensity={0.1} />
+        <directionalLight position={[0, 10, 10]} castShadow intensity={2} shadow-camera-far={70} />
+        <Graph info={tempInfo} boxSize={BOX_SIZE} />
+        <PlaneGeometry width={GROUND_WIDTH} length={GROUND_LENGHT} />
         <OrbitControls />
       </Canvas>
     </div>
