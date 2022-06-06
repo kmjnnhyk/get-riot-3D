@@ -1,32 +1,33 @@
-import { FunctionComponent, useMemo, useRef } from 'react';
-// import Box from '../Box';
-import { Instances } from '@react-three/drei';
-import Box from '../Box';
+import useNormalization from '@/hooks/useNormalization';
+import { FunctionComponent, useMemo } from 'react';
+import Bar from './Bar';
 
 type GraphProps = {
   info: object;
+  boxSize: number;
 };
 
-const Graph: FunctionComponent<GraphProps> = function ({ info }) {
-  const ref = useRef(null);
-  const BOX_SIZE = 2;
+const Graph: FunctionComponent<GraphProps> = function ({ info, boxSize }) {
+  const figureNormalized = useNormalization(info, 'figure');
 
-  const boxes = useMemo(() => {
+  // 나중에는 data가 많아질것을 대비하여
+  // 연산을 줄이기 위하여 useMemo를 사용
+  const data = useMemo(() => {
     const temp = [];
     for (const i in info) {
-      temp.push([info[i].year, info[i].figure, [BOX_SIZE * parseInt(i), 0, 0]]);
+      temp.push([info[i].year, figureNormalized[i] / 5, [boxSize * parseInt(i), 0, 0]]);
     }
     return temp;
-  }, [info, BOX_SIZE]);
+  }, [info, figureNormalized, boxSize]);
+
+  console.log(data.length);
 
   return (
-    <Instances ref={ref} position={[0, 0, 0]}>
-      <boxGeometry />
-      <meshStandardMaterial roughness={0} color="#353535" />
-      {boxes.map(([year, figure, pos], index) => (
-        <Box key={index} year={year} figure={figure} pos={pos} size={BOX_SIZE} />
+    <mesh position={[(-boxSize * data.length) / 2, 0, boxSize]}>
+      {data.map((bar, idx) => (
+        <Bar key={idx} data={bar} boxSize={boxSize} />
       ))}
-    </Instances>
+    </mesh>
   );
 };
 

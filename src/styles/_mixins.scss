@@ -9,6 +9,7 @@
   gap: $gap;
 }
 
+
 /* MEDIA QUERY */
 @mixin pc {
   @media (max-width: $pc) {
