@@ -5,7 +5,7 @@ import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import PlaneGeometry from './PlaneGeometry';
 import Graph from './Graph/Graph';
-import ZoomController from './Graph/ZoomController';
+import ZoomController from './ZoomController';
 import { Vector3 } from 'three';
 
 const DataCanvas: FunctionComponent = function () {
