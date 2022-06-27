@@ -1,19 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home, ShowDataPage, NotFound } from '@/pages';
-import Searcher from '@components/Searcher';
-import React from 'react';
+import { Home, NotFound } from '@/pages';
+import ShowCardsPage from './pages/ShowCardsPage/ShowCardsPage';
+import ShowResultPage from './pages/ShowResultPage/ShowResultPage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Searcher가 보이는 페이지 */}
-        <Route element={<Searcher />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/showdata/:summoner" element={<ShowDataPage />} />
-        </Route>
-
-        {/* Searcher가 보이는 않는 페이지 */}
+        <Route path="/" element={<Home />} />
+        <Route path="/showcards" element={<ShowCardsPage />} />
+        <Route path="/showcards/result" element={<ShowResultPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
