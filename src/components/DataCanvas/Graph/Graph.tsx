@@ -5,11 +5,11 @@ import Bar from './Bar';
 type GraphProps = {
   info: object;
   boxSize: number;
-  zoomToFocus: (focusObj: THREE.Vector3) => void;
 };
 
-const Graph: FunctionComponent<GraphProps> = function ({ info, boxSize, zoomToFocus }) {
+const Graph: FunctionComponent<GraphProps> = function ({ info, boxSize }) {
   const figureNormalized = useNormalization(info, 'figure');
+
   // 나중에는 data가 많아질것을 대비하여
   // 연산을 줄이기 위하여 useMemo를 사용
   const data = useMemo(() => {
@@ -20,20 +20,14 @@ const Graph: FunctionComponent<GraphProps> = function ({ info, boxSize, zoomToFo
     return temp;
   }, [info, figureNormalized, boxSize]);
 
+  console.log(data.length);
+
   return (
-    <>
+    <mesh position={[(-boxSize * data.length) / 2, 0, boxSize]}>
       {data.map((bar, idx) => (
-        <group
-          key={idx}
-          onClick={(e) => {
-            e.stopPropagation();
-            zoomToFocus(e.object.position);
-          }}
-        >
-          <Bar data={bar} boxSize={boxSize} />
-        </group>
+        <Bar key={idx} data={bar} boxSize={boxSize} />
       ))}
-    </>
+    </mesh>
   );
 };
 
